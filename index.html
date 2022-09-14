@@ -36,27 +36,27 @@
         </nav>
     </div>
 
-    <div class="container border mt-2 rounded p-4">
-        <h3 class="">Gerenciamento de Usuários</h3>
+    <div class="container border mt-4 rounded p-4">
+        <h3 class="mb-4">Gerenciamento de Usuários</h3>
 
         <form>
             <div class="row">
-                <div class="col">
+                <div class="col-md">
                     <label class="form-label" for="name">Nome</label>
                     <input class="form-control" type="text" name="name" id="name">
                 </div>
-                <div class="col">
+                <div class="col-md">
                     <label class="form-label" for="email">E-mail</label>
                     <input class="form-control" type="email" name="email" id="email">
                 </div>
             </div>
 
             <div class="row">
-                <div class="col">
+                <div class="col-md">
                     <label class="form-label" for="password">Senha</label>
                     <input class="form-control" type="password" name="password" id="password">
                 </div>
-                <div class="col">
+                <div class="col-md">
                     <label class="form-label" for="password-confirm">Confirmar Senha</label>
                     <input class="form-control" type="password" name="password-confirm" id="password-confirm">
                 </div>
@@ -64,6 +64,50 @@
 
             <button class="btn btn-success mt-3" type="submit">Cadastrar</button>
         </form>
+    </div>
+
+    <div class="container border rounded mt-4 p-4">
+        <table class="table table-light table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th colspan="2">Ação</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Julio</td>
+                    <td>ojuliocesar@gmail.com</td>
+                    <td>
+                        <a href="" class="btn btn-primary w-50">Alterar</a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-danger w-50">Alterar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Zoio</td>
+                    <td>zoio@gmail.com</td>
+                    <td>
+                        <a href="" class="btn btn-primary w-50">Alterar</a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-danger w-50">Alterar</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Canalha</td>
+                    <td>canalha@gmail.com</td>
+                    <td>
+                        <a href="" class="btn btn-primary w-50">Alterar</a>
+                    </td>
+                    <td>
+                        <a href="" class="btn btn-danger w-50">Alterar</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
   </body>
