@@ -3,8 +3,9 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>Datatable :p</title>
 
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
   </head>
   <body>
@@ -39,7 +40,7 @@
     <div class="container border mt-4 rounded p-4">
         <h3 class="mb-4">Gerenciamento de Usuários</h3>
 
-        <form>
+        <form id="form-users">
             <div class="row">
                 <div class="col-md">
                     <label class="form-label" for="name">Nome</label>
@@ -62,53 +63,29 @@
                 </div>
             </div>
 
-            <button class="btn btn-success mt-3" type="submit">Cadastrar</button>
+            <button class="btn btn-success mt-3" type="button" onclick="addUser()">Cadastrar</button>
         </form>
     </div>
 
     <div class="container border rounded mt-4 p-4">
-        <table class="table table-light table-striped">
+        <table class="table table-light" id="table">
             <thead>
                 <tr>
                     <th>Nome</th>
                     <th>Email</th>
-                    <th colspan="2">Ação</th>
+                    <th class="text-center">Ação</th>
                 </tr>
             </thead>
-            <tbody>
-                <tr>
-                    <td>Julio</td>
-                    <td>ojuliocesar@gmail.com</td>
-                    <td>
-                        <a href="" class="btn btn-primary w-50">Alterar</a>
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-danger w-50">Alterar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Zoio</td>
-                    <td>zoio@gmail.com</td>
-                    <td>
-                        <a href="" class="btn btn-primary w-50">Alterar</a>
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-danger w-50">Alterar</a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>Canalha</td>
-                    <td>canalha@gmail.com</td>
-                    <td>
-                        <a href="" class="btn btn-primary w-50">Alterar</a>
-                    </td>
-                    <td>
-                        <a href="" class="btn btn-danger w-50">Alterar</a>
-                    </td>
-                </tr>
-            </tbody>
+            <tbody id="tabela-dados"></tbody>
         </table>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.1.js" integrity="sha256-3zlB5s2uwoUzrXK3BT7AX3FyvojsraNFxCc2vC/7pNI=" crossorigin="anonymous"></script>
+    <script src="http://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <script src="assets/js/script.js"></script>
   </body>
 </html>
