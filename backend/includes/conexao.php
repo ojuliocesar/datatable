@@ -1,9 +1,9 @@
 <?php
 
-define('HOST','localhost');
-define('USERNAME','root');
-define('PASSWORD','');
-define('DATABASE','db_datatable');
+define('HOST', 'localhost');
+define('USERNAME', 'root');
+define('PASSWORD', '');
+define('DATABASE', 'db_datatable');
 
 try {
     // dados da conexao com o banco
