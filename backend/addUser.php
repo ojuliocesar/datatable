@@ -2,6 +2,8 @@
 
 include ('functions.php');
 
+include 'sendEmail.php';
+
 try {
 
     $carac = array(
@@ -56,6 +58,8 @@ try {
     $message = 'Usuário adicionado com sucesso!';
 
     insertUpdateDelete($sql,$message);
+
+    sendEmail($email, $name);
 
 } catch (PDOException $e) {
     pdocatch($e);
