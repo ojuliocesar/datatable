@@ -40,6 +40,7 @@ try {
     validateField($confirmPassword,'confirmar Senha');
 
     checkEmailUser($email);
+    checkCpfUser($cpf);
 
     if ($password != $confirmPassword) {
 
@@ -59,7 +60,9 @@ try {
 
     insertUpdateDelete($sql,$message);
 
-    sendEmail($email, $name);
+    $token = generateToken($email);
+
+    sendEmail($email, $name, $token);
 
 } catch (PDOException $e) {
     pdocatch($e);

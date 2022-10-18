@@ -37,27 +37,73 @@ function insertUpdateDelete($sql, $message)
 function checkEmailUser($email)
 {
 
-$sql = "SELECT email FROM user WHERE email = '{$email}'";
+    $sql = "SELECT email FROM user WHERE email = '{$email}'";
 
-$comando = $GLOBALS['conn']->prepare($sql);
+    $comando = $GLOBALS['conn']->prepare($sql);
 
-$comando->execute();
+    $comando->execute();
 
-$validaEmail = $comando->fetchAll(PDO::FETCH_ASSOC);
+    $validaEmail = $comando->fetchAll(PDO::FETCH_ASSOC);
 
-if ($validaEmail != null) {
-    
-    $return = array(
-        'return' => false,
-        'message' => 'E-mail já cadastrado, verifique e tente novamente'
-    );
+    if ($validaEmail != null) {
+        
+        $return = array(
+            'return' => false,
+            'message' => 'E-mail já cadastrado, verifique e tente novamente'
+        );
 
-    $json = json_encode($return, JSON_UNESCAPED_UNICODE);
+        $json = json_encode($return, JSON_UNESCAPED_UNICODE);
 
-    echo $json;
-    exit();
+        echo $json;
+        exit();
+    }
+
 }
 
+function checkCpfUser($cpf)
+{
+
+    $sql = "SELECT cpf FROM user WHERE cpf = '{$cpf}'";
+
+    $comando = $GLOBALS['conn']->prepare($sql);
+
+    $comando->execute();
+
+    if ($comando->rowCount()) {
+
+        $return = array(
+            'return' => false,
+            'message' => 'CPF já cadastrado, verifique e tente novamente'
+        );
+
+        $json = json_encode($return, JSON_UNESCAPED_UNICODE);
+
+        echo $json;
+        exit();
+    }
+
+}
+
+function generateToken($email) {
+    $sql = "SELECT id FROM user WHERE email = '{$email}'";
+
+    $comando = $GLOBALS['conn']->prepare($sql);
+
+    $comando->execute();
+
+    $dados = $comando->fetch(PDO::FETCH_ASSOC);
+
+    $idUsuario = $dados['id'];
+
+    $token = md5(uniqid());
+
+    $sql = "INSERT INTO user_token (id_user, token) VALUES ($idUsuario, '{$token}')";
+
+    $comando = $GLOBALS['conn']->prepare($sql);
+
+    $comando->execute();
+
+    return $token;
 }
 
 function pdocatch($e)

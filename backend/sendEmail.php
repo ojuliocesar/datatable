@@ -17,7 +17,7 @@ date_default_timezone_set('America/Sao_Paulo');
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 
-function sendEmail($recipientEmail, $recipientName) {
+function sendEmail($recipientEmail, $recipientName, $token) {
 
     // Configurações do Servidor
     $emailServer = 'smtp.gmail.com';
@@ -29,6 +29,8 @@ function sendEmail($recipientEmail, $recipientName) {
     $emailUserName = 'Técnico 22A';
 
     $emailUserPassword = 'zvfarpeztyqgtrhe';
+
+    $subject = 'Sistema Senac - Ative sua conta!';
 
     require 'PHPMailer/src/Exception.php';
     require 'PHPMailer/src/PHPMailer.php';
@@ -87,7 +89,7 @@ function sendEmail($recipientEmail, $recipientName) {
     $mail->addAddress($recipientEmail, $recipientName);
 
     //Set the subject line
-    $mail->Subject = 'PHPMailer GMail SMTP test';
+    $mail->Subject = $subject;
 
     //Read an HTML message body from an external file, convert referenced images to embedded,
     //convert HTML into a basic plain-text alternative body
@@ -95,7 +97,24 @@ function sendEmail($recipientEmail, $recipientName) {
 
     //Replace the plain text body with one created manually
     // $mail->AltBody = 'This is a plain-text message body';
-    $mail->Body = 'Teste de email ultilizando o PHPMailer - Corpo';
+
+    $bodyEmail = <<<EMAIL
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/8/86/Senac_logo.svg/2560px-Senac_logo.svg.png" width="200px">
+
+    <h3>Olá $recipientName, bem-vindo ao Sistema Senac</h3>
+
+    <p>Ative o seu login acessando o link abaixo!</p>
+
+    <br><a href="http://localhost/datatable/backend/activeUser.php?token=$token">Ativa Acesso</a><br>
+
+    <small>Esse é um E-mail automático, não responda</small><br>
+
+    <small>Em caso de dúvidas, entre em contato: contato@sistema.com</small>
+EMAIL;
+
+    $mail->Body = $bodyEmail;
+    $mail->isHTML(true);
 
     //Attach an image file
     // $mail->addAttachment('images/phpmailer_mini.png');
