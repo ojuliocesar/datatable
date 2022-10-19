@@ -6,9 +6,22 @@ $(document).ready( function () {
 
    $('#edit-tel').inputmask('(99) 99999-9999');
    $('#edit-cpf').inputmask('999.999.999-99');
+
+   closeLoader();
 } );
 
+const closeLoader = () => {
+    $('.preloader').fadeOut("slow", 0);
+}
+
+const openLoader = () => {
+
+    $('.preloader').fadeTo("slow", 1);
+}
+
 const addUser = () => {
+
+    openLoader();
 
     let dados = new FormData($('#form-users')[0]);
 
@@ -18,6 +31,8 @@ const addUser = () => {
     })
     .then((response)=>response.json())
     .then((result)=> {
+
+        closeLoader();  
 
         Swal.fire({
             icon: result.return == true ? 'success' : 'error',

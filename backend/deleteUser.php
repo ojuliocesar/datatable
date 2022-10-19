@@ -6,7 +6,7 @@ $id = $_POST['id'];
 
 try {
 
-    $sql = "DELETE FROM user WHERE id = $id";
+    $sql = "DELETE FROM user_token WHERE id = $id";
 
     $message = 'Usuário deletado com sucesso!';
 
