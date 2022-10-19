@@ -17,7 +17,7 @@
         
          .preloader {
             align-items: center;
-            background: rgba(23, 22, 22, 0.9);
+            background: rgba(23, 22, 22, 0.7);
             display: flex;
             height: 100vh;
             justify-content: center;
@@ -133,26 +133,27 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <form id="form-users">
+                    <form id="form-users-edit">
+                        <input class="form-control" type="hidden" name="edit-id" id="edit-id">
                         <div class="row">
                             <div class="col-md">
                                 <label class="form-label" for="edit-name">Nome</label>
-                                <input class="form-control" type="text" name="edit-name" id="edit-name">
+                                <input class="form-control" type="text" name="name" id="edit-name">
                             </div>
                             <div class="col-md">
                                 <label class="form-label" for="edit-email">E-mail</label>
-                                <input class="form-control" type="email" name="edit-email" id="edit-email">
+                                <input class="form-control" type="email" name="email" id="edit-email">
                             </div>
                         </div>
             
                         <div class="row">
                             <div class="col-md">
                                 <label class="form-label" for="edit-tel">Telefone</label>
-                                <input class="form-control" type="text" name="edit-tel" id="edit-tel">
+                                <input class="form-control" type="text" name="tel" id="edit-tel">
                             </div>
                             <div class="col-md">
                                 <label class="form-label" for="edit-cpf">CPF</label>
-                                <input class="form-control" type="text" name="edit-cpf" id="edit-cpf">
+                                <input class="form-control" type="text" name="cpf" id="edit-cpf">
                             </div>
                         </div>
                     </form>

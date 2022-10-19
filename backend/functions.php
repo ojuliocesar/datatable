@@ -33,8 +33,8 @@ function insertUpdateDelete($sql, $message)
     echo $json;
 }
 
-// Função que valída que o Email digitado já está cadastrado.
-function checkEmailUser($email)
+// Função que valida Email e CPF
+function checkUser($email, $cpf) 
 {
 
     $sql = "SELECT email FROM user WHERE email = '{$email}'";
@@ -43,9 +43,7 @@ function checkEmailUser($email)
 
     $comando->execute();
 
-    $validaEmail = $comando->fetchAll(PDO::FETCH_ASSOC);
-
-    if ($validaEmail != null) {
+    if ($comando->rowCount()) {
         
         $return = array(
             'return' => false,
@@ -57,11 +55,6 @@ function checkEmailUser($email)
         echo $json;
         exit();
     }
-
-}
-
-function checkCpfUser($cpf)
-{
 
     $sql = "SELECT cpf FROM user WHERE cpf = '{$cpf}'";
 
@@ -81,7 +74,48 @@ function checkCpfUser($cpf)
         echo $json;
         exit();
     }
+    
+}
 
+function checkUserUpdate($email, $cpf) 
+{
+    $sql = "SELECT email FROM user WHERE email = '{$email}'";
+
+    $comando = $GLOBALS['conn']->prepare($sql);
+
+    $comando->execute();
+
+    if ($comando->rowCount() > 1) {
+        
+        $return = array(
+            'return' => false,
+            'message' => 'E-mail já cadastrado, verifique e tente novamente'
+        );
+
+        $json = json_encode($return, JSON_UNESCAPED_UNICODE);
+
+        echo $json;
+        exit();
+    }
+
+    $sql = "SELECT cpf FROM user WHERE cpf = '{$cpf}'";
+
+    $comando = $GLOBALS['conn']->prepare($sql);
+
+    $comando->execute();
+
+    if ($comando->rowCount() > 1) {
+
+        $return = array(
+            'return' => false,
+            'message' => 'CPF já cadastrado, verifique e tente novamente'
+        );
+
+        $json = json_encode($return, JSON_UNESCAPED_UNICODE);
+
+        echo $json;
+        exit();
+    }
 }
 
 function generateToken($email) {
