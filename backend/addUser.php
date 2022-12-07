@@ -39,8 +39,7 @@ try {
 
     validateField($confirmPassword,'confirmar Senha');
 
-    checkEmailUser($email);
-    checkCpfUser($cpf);
+    checkUser($email, $cpf);
 
     if ($password != $confirmPassword) {
 

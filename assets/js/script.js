@@ -90,6 +90,26 @@ const listUser = () =>{
     })
 }
 
+const updateUser = () => {
+    let dados = new FormData($('#form-users-edit')[0]);
+
+    dados.append('id', $('#edit-id').val());
+
+    const result = fetch('backend/updateUser.php', {
+        method: "POST",
+        body: dados
+    })
+    .then((response)=> response.json())
+    .then((result)=> {
+
+        Swal.fire({
+            icon: result.return == true ? 'success' : 'error',
+            text: result.message,
+            title: result.return == true ? 'Sucesso!' : 'Oops',
+        })
+    })
+}
+
 const updateUserActive = (id) => {
     const result = fetch('backend/updateUserActive.php', {
         method: "POST",
@@ -143,6 +163,7 @@ listUserById = (id) => {
 
         console.log(result);
 
+        $('#edit-id').val(result.id)
         $('#edit-name').val(result.name);
         $('#edit-email').val(result.email);
         $('#edit-tel').val(result.telephone);

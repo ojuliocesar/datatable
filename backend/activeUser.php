@@ -33,8 +33,8 @@ try {
 <body>
   <div class="container-sm">
 
-    <div class="alert <?php echo $retorno == true ? 'alert-success' : 'alert-danger' ?>" role="alert">
-      <?php echo $return != 0 ? 'Cadastro ativado com sucesso!' : 'Erro ao ativar cadastro' ?>
+    <div class="alert <?= $return != 0 ? 'alert-success' : 'alert-danger' ?>" role="alert">
+      <?= $return != 0 ? 'Cadastro ativado com sucesso!' : 'Erro ao ativar cadastro' ?>
     </div>
 
     <a href="./../index.html">
