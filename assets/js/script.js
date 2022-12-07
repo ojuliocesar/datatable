@@ -126,7 +126,7 @@ const deleteUser = (id) => {
             title: result.return == true ? 'Sucesso!' : 'Oops',
         })
 
-        listUser()
+        listUser();
     })
 }
 
